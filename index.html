@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -50,8 +50,9 @@
             font-family: inherit;
             text-align: center;
             width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 100%;
+            display: block;
+            flex-shrink: 0;
         }
 
         .btn-item:hover {
@@ -61,7 +62,6 @@
         }
 
         .text-box {
-            max-width: 500px;
             width: 100%;
             padding: 14px 22px;
             border-radius: 6px;
@@ -73,8 +73,8 @@
             display: none;
             animation: fadeIn 0.3s ease;
             cursor: pointer;
-            margin: 0 auto;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .text-box.active {
@@ -92,7 +92,7 @@
     <div class="container">
         <h1 class="question">ليه ؟</h1>
 
-  <!-- زر 6 -->
+ <!-- زر 6 -->
         <button class="btn-item" onclick="event.stopPropagation(); toggleText(6)"لن يتم عقابي</button>
         <div class="text-box" id="text-6" onclick="event.stopPropagation(); closeText(6)">
     <p style="direction: rtl;">كيف لن يتم عقابك وقال الله</p>
@@ -177,8 +177,7 @@
 <p dir="rtl">&nbsp;</p>
         </div>
 
-
-
+       
 
         <!-- زر 7 -->
         <button class="btn-item" onclick="event.stopPropagation(); toggleText(7)">زر 7</button>
