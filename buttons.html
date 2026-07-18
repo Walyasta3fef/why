@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 زرار</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0a;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 60px 20px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 40px;
+            padding: 12px 40px;
+            font-size: 1rem;
+            border: 1px solid #333;
+            background: #141414;
+            color: #888;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .buttons-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            font-size: 0.95rem;
+            border: 1px solid #2a2a2a;
+            background: #111;
+            color: #888;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+            text-align: right;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .btn:hover {
+            border-color: #444;
+            color: #ddd;
+            background: #1a1a1a;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .text-box {
+            max-width: 700px;
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 6px;
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.8;
+            background: #111;
+            border: 1px solid #222;
+            display: none;
+            animation: fadeIn 0.3s ease;
+            cursor: pointer;
+        }
+
+        .text-box.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <a href="index.html" class="back">← العودة</a>
+
+        <div class="buttons-wrapper" id="wrapper"></div>
+    </div>
+
+    <script>
+        const wrapper = document.getElementById('wrapper');
+
+        for (let i = 1; i <= 100; i++) {
+            // Create button
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = 'زر ' + i;
+            btn.dataset.num = i;
+            btn.onclick = function(e) {
+                e.stopPropagation();
+                toggleText(i);
+            };
+            wrapper.appendChild(btn);
+
+            // Create text box
+            const textBox = document.createElement('div');
+            textBox.className = 'text-box';
+            textBox.id = 'text-' + i;
+            textBox.textContent = 'هذا هو الكلام الخاص بـ زر ' + i + '. يمكنك تعديل هذا النص كما تشاء.';
+            textBox.onclick = function(e) {
+                e.stopPropagation();
+                closeText(i);
+            };
+            wrapper.appendChild(textBox);
+        }
+
+        function toggleText(num) {
+            const allBoxes = document.querySelectorAll('.text-box');
+            const targetBox = document.getElementById('text-' + num);
+
+            // If this text is already open, close it
+            if (targetBox.classList.contains('active')) {
+                targetBox.classList.remove('active');
+                return;
+            }
+
+            // Close all other texts
+            allBoxes.forEach(box => box.classList.remove('active'));
+
+            // Open the clicked one
+            targetBox.classList.add('active');
+        }
+
+        function closeText(num) {
+            const targetBox = document.getElementById('text-' + num);
+            targetBox.classList.remove('active');
+        }
+
+        // Close all when clicking outside
+        document.addEventListener('click', function() {
+            const allBoxes = document.querySelectorAll('.text-box');
+            allBoxes.forEach(box => box.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>
