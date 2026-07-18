@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصفحة الرئيسية</title>
+    <title>ليه ؟</title>
     <style>
         * {
             margin: 0;
@@ -64,7 +64,6 @@
             background: #1e1e1e;
         }
 
-        /* Answer 1 content */
         .answer-content {
             max-width: 700px;
             width: 100%;
@@ -85,7 +84,6 @@
             display: block;
         }
 
-        /* Answer 2 buttons */
         .buttons-wrapper {
             max-width: 800px;
             width: 100%;
@@ -147,61 +145,446 @@
 <base target="_blank">
 </head>
 <body>
-    <h1 class="question">ما الذي تريد الوصول إليه؟</h1>
+    <h1 class="question">ليه ؟</h1>
 
     <div class="buttons-container">
-        <button class="btn" id="btn-answer1" onclick="showAnswer(1)">الإجابة الأولى</button>
-        <button class="btn" id="btn-answer2" onclick="showAnswer(2)">الإجابة الثانية</button>
+        <button class="btn" id="btn-answer1" onclick="event.stopPropagation(); showAnswer(1)">لن يتم عقابي</button>
+        <button class="btn" id="btn-answer2" onclick="event.stopPropagation(); showAnswer(2)">سيتم عقابي</button>
     </div>
 
     <!-- Answer 1: Text only -->
     <div class="answer-content" id="answer1">
-        هذا هو الكلام الذي يظهر عند اختيار الإجابة الأولى.<br>
-        يمكنك تعديل هذا النص كما تشاء.<br>
-        المحتوى يظهر هنا مباشرة دون الانتقال لصفحة أخرى.<br>
-        فقط نص بسيط وأنيق.
+     <p style="direction: rtl;">كيف لن يتم عقابك وقال الله</p>
+<p style="direction: rtl;"><img src="https://surahquran.com/img/ayah/99-8.png" alt="" width="333" height="153" /></p>﴾
+        
     </div>
 
-    <!-- Answer 2: 100 buttons -->
-    <div class="buttons-wrapper" id="answer2"></div>
+    <!-- Answer 2: 100 buttons (written one by one) -->
+    <div class="buttons-wrapper" id="answer2">
+        <!-- زر 1 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(1)">عملتها كتير ومحصلش حاجة</button>
+        <div class="text-box" id="text-1" onclick="event.stopPropagation(); closeText(1)">
+            <p dir="rtl">دة تفكير بالتمني</p>
+<p dir="rtl">أنت تتمنى انه لم يحصل شي</p>
+<p dir="rtl">وما ادراك أنه لم يحدث شئ</p>
+<p dir="rtl">الا تعلم حديث الاقوام اللذين يصلون ويصومون ويفعلون الطاعات ثم يجعلها الله هباءا بسبب ذنوب الخلوات؟</p>
+<p dir="rtl">وهل محصلش حاجة دة يخليك تزود في المعاصي ؟!&nbsp;</p>
+<p dir="rtl">دة شكر ربنا إن محصلش حاجة بالرغم من إنك بتقع؟</p>
+<p dir="rtl">بدل ما تتصدق إن محصلكش حاجة بدل ما تزود طاعات. تروح تتمادى في المعاصي ؟!</p>
+        </div>
+
+        <!-- زر 2 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(2)">زر 2</button>
+        <div class="text-box" id="text-2" onclick="event.stopPropagation(); closeText(2)">
+           
+        </div>
+
+        <!-- زر 3 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(3)">زر 3</button>
+        <div class="text-box" id="text-3" onclick="event.stopPropagation(); closeText(3)">هذا هو الكلام الخاص بـ زر 3. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 4 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(4)">زر 4</button>
+        <div class="text-box" id="text-4" onclick="event.stopPropagation(); closeText(4)">هذا هو الكلام الخاص بـ زر 4. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 5 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(5)">زر 5</button>
+        <div class="text-box" id="text-5" onclick="event.stopPropagation(); closeText(5)">هذا هو الكلام الخاص بـ زر 5. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 6 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(6)">زر 6</button>
+        <div class="text-box" id="text-6" onclick="event.stopPropagation(); closeText(6)">هذا هو الكلام الخاص بـ زر 6. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 7 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(7)">زر 7</button>
+        <div class="text-box" id="text-7" onclick="event.stopPropagation(); closeText(7)">هذا هو الكلام الخاص بـ زر 7. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 8 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(8)">زر 8</button>
+        <div class="text-box" id="text-8" onclick="event.stopPropagation(); closeText(8)">هذا هو الكلام الخاص بـ زر 8. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 9 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(9)">زر 9</button>
+        <div class="text-box" id="text-9" onclick="event.stopPropagation(); closeText(9)">هذا هو الكلام الخاص بـ زر 9. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 10 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(10)">زر 10</button>
+        <div class="text-box" id="text-10" onclick="event.stopPropagation(); closeText(10)">هذا هو الكلام الخاص بـ زر 10. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 11 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(11)">زر 11</button>
+        <div class="text-box" id="text-11" onclick="event.stopPropagation(); closeText(11)">هذا هو الكلام الخاص بـ زر 11. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 12 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(12)">زر 12</button>
+        <div class="text-box" id="text-12" onclick="event.stopPropagation(); closeText(12)">هذا هو الكلام الخاص بـ زر 12. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 13 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(13)">زر 13</button>
+        <div class="text-box" id="text-13" onclick="event.stopPropagation(); closeText(13)">هذا هو الكلام الخاص بـ زر 13. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 14 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(14)">زر 14</button>
+        <div class="text-box" id="text-14" onclick="event.stopPropagation(); closeText(14)">هذا هو الكلام الخاص بـ زر 14. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 15 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(15)">زر 15</button>
+        <div class="text-box" id="text-15" onclick="event.stopPropagation(); closeText(15)">هذا هو الكلام الخاص بـ زر 15. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 16 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(16)">زر 16</button>
+        <div class="text-box" id="text-16" onclick="event.stopPropagation(); closeText(16)">هذا هو الكلام الخاص بـ زر 16. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 17 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(17)">زر 17</button>
+        <div class="text-box" id="text-17" onclick="event.stopPropagation(); closeText(17)">هذا هو الكلام الخاص بـ زر 17. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 18 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(18)">زر 18</button>
+        <div class="text-box" id="text-18" onclick="event.stopPropagation(); closeText(18)">هذا هو الكلام الخاص بـ زر 18. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 19 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(19)">زر 19</button>
+        <div class="text-box" id="text-19" onclick="event.stopPropagation(); closeText(19)">هذا هو الكلام الخاص بـ زر 19. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 20 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(20)">زر 20</button>
+        <div class="text-box" id="text-20" onclick="event.stopPropagation(); closeText(20)">هذا هو الكلام الخاص بـ زر 20. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 21 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(21)">زر 21</button>
+        <div class="text-box" id="text-21" onclick="event.stopPropagation(); closeText(21)">هذا هو الكلام الخاص بـ زر 21. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 22 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(22)">زر 22</button>
+        <div class="text-box" id="text-22" onclick="event.stopPropagation(); closeText(22)">هذا هو الكلام الخاص بـ زر 22. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 23 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(23)">زر 23</button>
+        <div class="text-box" id="text-23" onclick="event.stopPropagation(); closeText(23)">هذا هو الكلام الخاص بـ زر 23. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 24 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(24)">زر 24</button>
+        <div class="text-box" id="text-24" onclick="event.stopPropagation(); closeText(24)">هذا هو الكلام الخاص بـ زر 24. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 25 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(25)">زر 25</button>
+        <div class="text-box" id="text-25" onclick="event.stopPropagation(); closeText(25)">هذا هو الكلام الخاص بـ زر 25. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 26 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(26)">زر 26</button>
+        <div class="text-box" id="text-26" onclick="event.stopPropagation(); closeText(26)">هذا هو الكلام الخاص بـ زر 26. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 27 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(27)">زر 27</button>
+        <div class="text-box" id="text-27" onclick="event.stopPropagation(); closeText(27)">هذا هو الكلام الخاص بـ زر 27. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 28 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(28)">زر 28</button>
+        <div class="text-box" id="text-28" onclick="event.stopPropagation(); closeText(28)">هذا هو الكلام الخاص بـ زر 28. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 29 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(29)">زر 29</button>
+        <div class="text-box" id="text-29" onclick="event.stopPropagation(); closeText(29)">هذا هو الكلام الخاص بـ زر 29. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 30 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(30)">زر 30</button>
+        <div class="text-box" id="text-30" onclick="event.stopPropagation(); closeText(30)">هذا هو الكلام الخاص بـ زر 30. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 31 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(31)">زر 31</button>
+        <div class="text-box" id="text-31" onclick="event.stopPropagation(); closeText(31)">هذا هو الكلام الخاص بـ زر 31. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 32 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(32)">زر 32</button>
+        <div class="text-box" id="text-32" onclick="event.stopPropagation(); closeText(32)">هذا هو الكلام الخاص بـ زر 32. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 33 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(33)">زر 33</button>
+        <div class="text-box" id="text-33" onclick="event.stopPropagation(); closeText(33)">هذا هو الكلام الخاص بـ زر 33. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 34 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(34)">زر 34</button>
+        <div class="text-box" id="text-34" onclick="event.stopPropagation(); closeText(34)">هذا هو الكلام الخاص بـ زر 34. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 35 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(35)">زر 35</button>
+        <div class="text-box" id="text-35" onclick="event.stopPropagation(); closeText(35)">هذا هو الكلام الخاص بـ زر 35. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 36 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(36)">زر 36</button>
+        <div class="text-box" id="text-36" onclick="event.stopPropagation(); closeText(36)">هذا هو الكلام الخاص بـ زر 36. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 37 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(37)">زر 37</button>
+        <div class="text-box" id="text-37" onclick="event.stopPropagation(); closeText(37)">هذا هو الكلام الخاص بـ زر 37. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 38 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(38)">زر 38</button>
+        <div class="text-box" id="text-38" onclick="event.stopPropagation(); closeText(38)">هذا هو الكلام الخاص بـ زر 38. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 39 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(39)">زر 39</button>
+        <div class="text-box" id="text-39" onclick="event.stopPropagation(); closeText(39)">هذا هو الكلام الخاص بـ زر 39. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 40 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(40)">زر 40</button>
+        <div class="text-box" id="text-40" onclick="event.stopPropagation(); closeText(40)">هذا هو الكلام الخاص بـ زر 40. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 41 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(41)">زر 41</button>
+        <div class="text-box" id="text-41" onclick="event.stopPropagation(); closeText(41)">هذا هو الكلام الخاص بـ زر 41. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 42 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(42)">زر 42</button>
+        <div class="text-box" id="text-42" onclick="event.stopPropagation(); closeText(42)">هذا هو الكلام الخاص بـ زر 42. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 43 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(43)">زر 43</button>
+        <div class="text-box" id="text-43" onclick="event.stopPropagation(); closeText(43)">هذا هو الكلام الخاص بـ زر 43. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 44 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(44)">زر 44</button>
+        <div class="text-box" id="text-44" onclick="event.stopPropagation(); closeText(44)">هذا هو الكلام الخاص بـ زر 44. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 45 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(45)">زر 45</button>
+        <div class="text-box" id="text-45" onclick="event.stopPropagation(); closeText(45)">هذا هو الكلام الخاص بـ زر 45. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 46 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(46)">زر 46</button>
+        <div class="text-box" id="text-46" onclick="event.stopPropagation(); closeText(46)">هذا هو الكلام الخاص بـ زر 46. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 47 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(47)">زر 47</button>
+        <div class="text-box" id="text-47" onclick="event.stopPropagation(); closeText(47)">هذا هو الكلام الخاص بـ زر 47. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 48 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(48)">زر 48</button>
+        <div class="text-box" id="text-48" onclick="event.stopPropagation(); closeText(48)">هذا هو الكلام الخاص بـ زر 48. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 49 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(49)">زر 49</button>
+        <div class="text-box" id="text-49" onclick="event.stopPropagation(); closeText(49)">هذا هو الكلام الخاص بـ زر 49. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 50 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(50)">زر 50</button>
+        <div class="text-box" id="text-50" onclick="event.stopPropagation(); closeText(50)">هذا هو الكلام الخاص بـ زر 50. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 51 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(51)">زر 51</button>
+        <div class="text-box" id="text-51" onclick="event.stopPropagation(); closeText(51)">هذا هو الكلام الخاص بـ زر 51. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 52 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(52)">زر 52</button>
+        <div class="text-box" id="text-52" onclick="event.stopPropagation(); closeText(52)">هذا هو الكلام الخاص بـ زر 52. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 53 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(53)">زر 53</button>
+        <div class="text-box" id="text-53" onclick="event.stopPropagation(); closeText(53)">هذا هو الكلام الخاص بـ زر 53. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 54 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(54)">زر 54</button>
+        <div class="text-box" id="text-54" onclick="event.stopPropagation(); closeText(54)">هذا هو الكلام الخاص بـ زر 54. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 55 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(55)">زر 55</button>
+        <div class="text-box" id="text-55" onclick="event.stopPropagation(); closeText(55)">هذا هو الكلام الخاص بـ زر 55. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 56 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(56)">زر 56</button>
+        <div class="text-box" id="text-56" onclick="event.stopPropagation(); closeText(56)">هذا هو الكلام الخاص بـ زر 56. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 57 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(57)">زر 57</button>
+        <div class="text-box" id="text-57" onclick="event.stopPropagation(); closeText(57)">هذا هو الكلام الخاص بـ زر 57. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 58 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(58)">زر 58</button>
+        <div class="text-box" id="text-58" onclick="event.stopPropagation(); closeText(58)">هذا هو الكلام الخاص بـ زر 58. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 59 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(59)">زر 59</button>
+        <div class="text-box" id="text-59" onclick="event.stopPropagation(); closeText(59)">هذا هو الكلام الخاص بـ زر 59. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 60 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(60)">زر 60</button>
+        <div class="text-box" id="text-60" onclick="event.stopPropagation(); closeText(60)">هذا هو الكلام الخاص بـ زر 60. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 61 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(61)">زر 61</button>
+        <div class="text-box" id="text-61" onclick="event.stopPropagation(); closeText(61)">هذا هو الكلام الخاص بـ زر 61. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 62 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(62)">زر 62</button>
+        <div class="text-box" id="text-62" onclick="event.stopPropagation(); closeText(62)">هذا هو الكلام الخاص بـ زر 62. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 63 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(63)">زر 63</button>
+        <div class="text-box" id="text-63" onclick="event.stopPropagation(); closeText(63)">هذا هو الكلام الخاص بـ زر 63. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 64 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(64)">زر 64</button>
+        <div class="text-box" id="text-64" onclick="event.stopPropagation(); closeText(64)">هذا هو الكلام الخاص بـ زر 64. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 65 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(65)">زر 65</button>
+        <div class="text-box" id="text-65" onclick="event.stopPropagation(); closeText(65)">هذا هو الكلام الخاص بـ زر 65. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 66 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(66)">زر 66</button>
+        <div class="text-box" id="text-66" onclick="event.stopPropagation(); closeText(66)">هذا هو الكلام الخاص بـ زر 66. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 67 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(67)">زر 67</button>
+        <div class="text-box" id="text-67" onclick="event.stopPropagation(); closeText(67)">هذا هو الكلام الخاص بـ زر 67. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 68 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(68)">زر 68</button>
+        <div class="text-box" id="text-68" onclick="event.stopPropagation(); closeText(68)">هذا هو الكلام الخاص بـ زر 68. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 69 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(69)">زر 69</button>
+        <div class="text-box" id="text-69" onclick="event.stopPropagation(); closeText(69)">هذا هو الكلام الخاص بـ زر 69. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 70 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(70)">زر 70</button>
+        <div class="text-box" id="text-70" onclick="event.stopPropagation(); closeText(70)">هذا هو الكلام الخاص بـ زر 70. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 71 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(71)">زر 71</button>
+        <div class="text-box" id="text-71" onclick="event.stopPropagation(); closeText(71)">هذا هو الكلام الخاص بـ زر 71. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 72 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(72)">زر 72</button>
+        <div class="text-box" id="text-72" onclick="event.stopPropagation(); closeText(72)">هذا هو الكلام الخاص بـ زر 72. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 73 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(73)">زر 73</button>
+        <div class="text-box" id="text-73" onclick="event.stopPropagation(); closeText(73)">هذا هو الكلام الخاص بـ زر 73. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 74 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(74)">زر 74</button>
+        <div class="text-box" id="text-74" onclick="event.stopPropagation(); closeText(74)">هذا هو الكلام الخاص بـ زر 74. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 75 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(75)">زر 75</button>
+        <div class="text-box" id="text-75" onclick="event.stopPropagation(); closeText(75)">هذا هو الكلام الخاص بـ زر 75. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 76 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(76)">زر 76</button>
+        <div class="text-box" id="text-76" onclick="event.stopPropagation(); closeText(76)">هذا هو الكلام الخاص بـ زر 76. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 77 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(77)">زر 77</button>
+        <div class="text-box" id="text-77" onclick="event.stopPropagation(); closeText(77)">هذا هو الكلام الخاص بـ زر 77. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 78 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(78)">زر 78</button>
+        <div class="text-box" id="text-78" onclick="event.stopPropagation(); closeText(78)">هذا هو الكلام الخاص بـ زر 78. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 79 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(79)">زر 79</button>
+        <div class="text-box" id="text-79" onclick="event.stopPropagation(); closeText(79)">هذا هو الكلام الخاص بـ زر 79. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 80 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(80)">زر 80</button>
+        <div class="text-box" id="text-80" onclick="event.stopPropagation(); closeText(80)">هذا هو الكلام الخاص بـ زر 80. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 81 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(81)">زر 81</button>
+        <div class="text-box" id="text-81" onclick="event.stopPropagation(); closeText(81)">هذا هو الكلام الخاص بـ زر 81. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 82 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(82)">زر 82</button>
+        <div class="text-box" id="text-82" onclick="event.stopPropagation(); closeText(82)">هذا هو الكلام الخاص بـ زر 82. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 83 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(83)">زر 83</button>
+        <div class="text-box" id="text-83" onclick="event.stopPropagation(); closeText(83)">هذا هو الكلام الخاص بـ زر 83. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 84 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(84)">زر 84</button>
+        <div class="text-box" id="text-84" onclick="event.stopPropagation(); closeText(84)">هذا هو الكلام الخاص بـ زر 84. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 85 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(85)">زر 85</button>
+        <div class="text-box" id="text-85" onclick="event.stopPropagation(); closeText(85)">هذا هو الكلام الخاص بـ زر 85. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 86 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(86)">زر 86</button>
+        <div class="text-box" id="text-86" onclick="event.stopPropagation(); closeText(86)">هذا هو الكلام الخاص بـ زر 86. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 87 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(87)">زر 87</button>
+        <div class="text-box" id="text-87" onclick="event.stopPropagation(); closeText(87)">هذا هو الكلام الخاص بـ زر 87. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 88 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(88)">زر 88</button>
+        <div class="text-box" id="text-88" onclick="event.stopPropagation(); closeText(88)">هذا هو الكلام الخاص بـ زر 88. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 89 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(89)">زر 89</button>
+        <div class="text-box" id="text-89" onclick="event.stopPropagation(); closeText(89)">هذا هو الكلام الخاص بـ زر 89. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 90 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(90)">زر 90</button>
+        <div class="text-box" id="text-90" onclick="event.stopPropagation(); closeText(90)">هذا هو الكلام الخاص بـ زر 90. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 91 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(91)">زر 91</button>
+        <div class="text-box" id="text-91" onclick="event.stopPropagation(); closeText(91)">هذا هو الكلام الخاص بـ زر 91. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 92 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(92)">زر 92</button>
+        <div class="text-box" id="text-92" onclick="event.stopPropagation(); closeText(92)">هذا هو الكلام الخاص بـ زر 92. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 93 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(93)">زر 93</button>
+        <div class="text-box" id="text-93" onclick="event.stopPropagation(); closeText(93)">هذا هو الكلام الخاص بـ زر 93. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 94 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(94)">زر 94</button>
+        <div class="text-box" id="text-94" onclick="event.stopPropagation(); closeText(94)">هذا هو الكلام الخاص بـ زر 94. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 95 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(95)">زر 95</button>
+        <div class="text-box" id="text-95" onclick="event.stopPropagation(); closeText(95)">هذا هو الكلام الخاص بـ زر 95. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 96 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(96)">زر 96</button>
+        <div class="text-box" id="text-96" onclick="event.stopPropagation(); closeText(96)">هذا هو الكلام الخاص بـ زر 96. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 97 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(97)">زر 97</button>
+        <div class="text-box" id="text-97" onclick="event.stopPropagation(); closeText(97)">هذا هو الكلام الخاص بـ زر 97. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 98 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(98)">زر 98</button>
+        <div class="text-box" id="text-98" onclick="event.stopPropagation(); closeText(98)">هذا هو الكلام الخاص بـ زر 98. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 99 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(99)">زر 99</button>
+        <div class="text-box" id="text-99" onclick="event.stopPropagation(); closeText(99)">هذا هو الكلام الخاص بـ زر 99. يمكنك تعديل هذا النص كما تشاء.</div>
+
+        <!-- زر 100 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(100)">زر 100</button>
+        <div class="text-box" id="text-100" onclick="event.stopPropagation(); closeText(100)">هذا هو الكلام الخاص بـ زر 100. يمكنك تعديل هذا النص كما تشاء.</div>
+
+    </div>
 
     <script>
-        // Build 100 buttons
-        const wrapper = document.getElementById('answer2');
-        for (let i = 1; i <= 100; i++) {
-            const btn = document.createElement('button');
-            btn.className = 'btn-item';
-            btn.textContent = 'زر ' + i;
-            btn.onclick = function(e) {
-                e.stopPropagation();
-                toggleText(i);
-            };
-            wrapper.appendChild(btn);
-
-            const textBox = document.createElement('div');
-            textBox.className = 'text-box';
-            textBox.id = 'text-' + i;
-            textBox.textContent = 'هذا هو الكلام الخاص بـ زر ' + i + '. يمكنك تعديل هذا النص كما تشاء.';
-            textBox.onclick = function(e) {
-                e.stopPropagation();
-                closeText(i);
-            };
-            wrapper.appendChild(textBox);
-        }
-
         function showAnswer(num) {
             const answer1 = document.getElementById('answer1');
             const answer2 = document.getElementById('answer2');
             const btn1 = document.getElementById('btn-answer1');
             const btn2 = document.getElementById('btn-answer2');
 
-            // Close all first
             answer1.classList.remove('active');
             answer2.classList.remove('active');
             btn1.classList.remove('active');
             btn2.classList.remove('active');
 
-            // Close all text boxes in answer2
             document.querySelectorAll('.text-box').forEach(box => box.classList.remove('active'));
 
             if (num === 1) {
@@ -242,7 +625,6 @@
             document.getElementById('text-' + num).classList.remove('active');
         }
 
-        // Close all when clicking outside
         document.addEventListener('click', function() {
             document.querySelectorAll('.text-box').forEach(box => box.classList.remove('active'));
         });
