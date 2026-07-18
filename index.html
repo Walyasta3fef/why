@@ -13,14 +13,17 @@
 
         body {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             background: #0a0a0a;
             font-family: 'Segoe UI', Tahoma, sans-serif;
-            padding: 40px 20px;
-            gap: 40px;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .question {
@@ -29,77 +32,12 @@
             font-weight: 300;
             text-align: center;
             letter-spacing: 1px;
-        }
-
-        .buttons-container {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 16px 60px;
-            font-size: 1.2rem;
-            border: 1px solid #333;
-            background: #141414;
-            color: #b0b0b0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            border-color: #555;
-            color: #fff;
-            background: #1a1a1a;
-            transform: translateY(-2px);
-        }
-
-        .btn.active {
-            border-color: #666;
-            color: #fff;
-            background: #1e1e1e;
-        }
-
-        .answer-content {
-            max-width: 700px;
-            width: 100%;
-            padding: 30px 40px;
-            border-radius: 8px;
-            color: #c0c0c0;
-            font-size: 1.2rem;
-            line-height: 2;
-            text-align: center;
-            font-weight: 300;
-            background: #111;
-            border: 1px solid #222;
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .answer-content.active {
-            display: block;
-        }
-
-        .buttons-wrapper {
-            max-width: 800px;
-            width: 100%;
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .buttons-wrapper.active {
-            display: flex;
+            margin-bottom: 30px;
         }
 
         .btn-item {
             padding: 12px 24px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border: 1px solid #222;
             background: #0f0f0f;
             color: #777;
@@ -138,29 +76,25 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-8px); }
+            from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 <base target="_blank">
 </head>
 <body>
-    <h1 class="question">ليه ؟</h1>
+    <div class="container">
+        <h1 class="question">ليه ؟</h1>
 
-    <div class="buttons-container">
-        <button class="btn" id="btn-answer1" onclick="event.stopPropagation(); showAnswer(1)">لن يتم عقابي</button>
-        <button class="btn" id="btn-answer2" onclick="event.stopPropagation(); showAnswer(2)">سيتم عقابي</button>
-    </div>
-
-    <!-- Answer 1: Text only -->
-    <div class="answer-content" id="answer1">
-     <p style="direction: rtl;">كيف لن يتم عقابك وقال الله</p>
+        <!-- زر 6 -->
+        <button class="btn-item" onclick="event.stopPropagation(); toggleText(6)"لن يتم عقابي</button>
+        <div class="text-box" id="text-6" onclick="event.stopPropagation(); closeText(6)">
+    <p style="direction: rtl;">كيف لن يتم عقابك وقال الله</p>
 <p style="direction: rtl;"><img src="https://surahquran.com/img/ayah/99-8.png" alt="" width="333" height="153" /></p>
         اللي هايعمل شر , هايشوفه في الدنيا أو الاخرة
     </div>
+</div>
 
-    <!-- Answer 2: 100 buttons (written one by one) -->
-    <div class="buttons-wrapper" id="answer2">
         <!-- زر 1 -->
         <button class="btn-item" onclick="event.stopPropagation(); toggleText(1)">عملتها كتير ومحصلش حاجة</button>
         <div class="text-box" id="text-1" onclick="event.stopPropagation(); closeText(1)">
@@ -237,9 +171,8 @@
 <p dir="rtl">&nbsp;</p>
         </div>
 
-        <!-- زر 6 -->
-        <button class="btn-item" onclick="event.stopPropagation(); toggleText(6)">أنا اصلا مدمن ووسخ</button>
-        <div class="text-box" id="text-6" onclick="event.stopPropagation(); closeText(6)">هذا هو الكلام الخاص بـ زر 6. يمكنك تعديل هذا النص كما تشاء.</div>
+
+
 
         <!-- زر 7 -->
         <button class="btn-item" onclick="event.stopPropagation(); toggleText(7)">زر 7</button>
@@ -620,40 +553,6 @@
     </div>
 
     <script>
-        function showAnswer(num) {
-            const answer1 = document.getElementById('answer1');
-            const answer2 = document.getElementById('answer2');
-            const btn1 = document.getElementById('btn-answer1');
-            const btn2 = document.getElementById('btn-answer2');
-
-            answer1.classList.remove('active');
-            answer2.classList.remove('active');
-            btn1.classList.remove('active');
-            btn2.classList.remove('active');
-
-            document.querySelectorAll('.text-box').forEach(box => box.classList.remove('active'));
-
-            if (num === 1) {
-                if (answer1.dataset.open === 'true') {
-                    answer1.dataset.open = 'false';
-                    return;
-                }
-                answer1.classList.add('active');
-                answer1.dataset.open = 'true';
-                answer2.dataset.open = 'false';
-                btn1.classList.add('active');
-            } else {
-                if (answer2.dataset.open === 'true') {
-                    answer2.dataset.open = 'false';
-                    return;
-                }
-                answer2.classList.add('active');
-                answer2.dataset.open = 'true';
-                answer1.dataset.open = 'false';
-                btn2.classList.add('active');
-            }
-        }
-
         function toggleText(num) {
             const allBoxes = document.querySelectorAll('.text-box');
             const targetBox = document.getElementById('text-' + num);
