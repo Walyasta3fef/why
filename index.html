@@ -48,8 +48,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: inherit;
-            text-decoration: none;
-            display: inline-block;
             letter-spacing: 1px;
         }
 
@@ -59,6 +57,92 @@
             background: #1a1a1a;
             transform: translateY(-2px);
         }
+
+        .btn.active {
+            border-color: #666;
+            color: #fff;
+            background: #1e1e1e;
+        }
+
+        /* Answer 1 content */
+        .answer-content {
+            max-width: 700px;
+            width: 100%;
+            padding: 30px 40px;
+            border-radius: 8px;
+            color: #c0c0c0;
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            font-weight: 300;
+            background: #111;
+            border: 1px solid #222;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .answer-content.active {
+            display: block;
+        }
+
+        /* Answer 2 buttons */
+        .buttons-wrapper {
+            max-width: 800px;
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .buttons-wrapper.active {
+            display: flex;
+        }
+
+        .btn-item {
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            border: 1px solid #222;
+            background: #0f0f0f;
+            color: #777;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+            text-align: right;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .btn-item:hover {
+            border-color: #444;
+            color: #bbb;
+            background: #151515;
+        }
+
+        .text-box {
+            max-width: 700px;
+            width: 100%;
+            padding: 14px 22px;
+            border-radius: 6px;
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            background: #0c0c0c;
+            border: 1px solid #1a1a1a;
+            display: none;
+            animation: fadeIn 0.3s ease;
+            cursor: pointer;
+        }
+
+        .text-box.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 <base target="_blank">
 </head>
@@ -66,8 +150,102 @@
     <h1 class="question">ما الذي تريد الوصول إليه؟</h1>
 
     <div class="buttons-container">
-        <a href="page2.html" class="btn">الإجابة الأولى</a>
-        <a href="buttons.html" class="btn">الإجابة الثانية</a>
+        <button class="btn" id="btn-answer1" onclick="showAnswer(1)">الإجابة الأولى</button>
+        <button class="btn" id="btn-answer2" onclick="showAnswer(2)">الإجابة الثانية</button>
     </div>
+
+    <!-- Answer 1: Text only -->
+    <div class="answer-content" id="answer1">
+        هذا هو الكلام الذي يظهر عند اختيار الإجابة الأولى.<br>
+        يمكنك تعديل هذا النص كما تشاء.<br>
+        المحتوى يظهر هنا مباشرة دون الانتقال لصفحة أخرى.<br>
+        فقط نص بسيط وأنيق.
+    </div>
+
+    <!-- Answer 2: 100 buttons -->
+    <div class="buttons-wrapper" id="answer2"></div>
+
+    <script>
+        // Build 100 buttons
+        const wrapper = document.getElementById('answer2');
+        for (let i = 1; i <= 100; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-item';
+            btn.textContent = 'زر ' + i;
+            btn.onclick = function(e) {
+                e.stopPropagation();
+                toggleText(i);
+            };
+            wrapper.appendChild(btn);
+
+            const textBox = document.createElement('div');
+            textBox.className = 'text-box';
+            textBox.id = 'text-' + i;
+            textBox.textContent = 'هذا هو الكلام الخاص بـ زر ' + i + '. يمكنك تعديل هذا النص كما تشاء.';
+            textBox.onclick = function(e) {
+                e.stopPropagation();
+                closeText(i);
+            };
+            wrapper.appendChild(textBox);
+        }
+
+        function showAnswer(num) {
+            const answer1 = document.getElementById('answer1');
+            const answer2 = document.getElementById('answer2');
+            const btn1 = document.getElementById('btn-answer1');
+            const btn2 = document.getElementById('btn-answer2');
+
+            // Close all first
+            answer1.classList.remove('active');
+            answer2.classList.remove('active');
+            btn1.classList.remove('active');
+            btn2.classList.remove('active');
+
+            // Close all text boxes in answer2
+            document.querySelectorAll('.text-box').forEach(box => box.classList.remove('active'));
+
+            if (num === 1) {
+                if (answer1.dataset.open === 'true') {
+                    answer1.dataset.open = 'false';
+                    return;
+                }
+                answer1.classList.add('active');
+                answer1.dataset.open = 'true';
+                answer2.dataset.open = 'false';
+                btn1.classList.add('active');
+            } else {
+                if (answer2.dataset.open === 'true') {
+                    answer2.dataset.open = 'false';
+                    return;
+                }
+                answer2.classList.add('active');
+                answer2.dataset.open = 'true';
+                answer1.dataset.open = 'false';
+                btn2.classList.add('active');
+            }
+        }
+
+        function toggleText(num) {
+            const allBoxes = document.querySelectorAll('.text-box');
+            const targetBox = document.getElementById('text-' + num);
+
+            if (targetBox.classList.contains('active')) {
+                targetBox.classList.remove('active');
+                return;
+            }
+
+            allBoxes.forEach(box => box.classList.remove('active'));
+            targetBox.classList.add('active');
+        }
+
+        function closeText(num) {
+            document.getElementById('text-' + num).classList.remove('active');
+        }
+
+        // Close all when clicking outside
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.text-box').forEach(box => box.classList.remove('active'));
+        });
+    </script>
 </body>
 </html>
