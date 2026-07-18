@@ -1,56 +1,73 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>راديو وليستعفف</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        .question {
+            color: #e0e0e0;
+            font-size: 2rem;
+            font-weight: 300;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 60px;
+            font-size: 1.2rem;
+            border: 1px solid #333;
+            background: #141414;
+            color: #b0b0b0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            border-color: #555;
+            color: #fff;
+            background: #1a1a1a;
+            transform: translateY(-2px);
+        }
+    </style>
+<base target="_blank">
 </head>
-<body style="background:#111;color:#fff;text-align:center;padding-top:50px;">
-<h2>🎧 راديو وليستعفف — بث تلقائي</h2>
-<p>يتم تشغيل ملف عشوائي من القائمة تلقائيًا بعد الضغط على زر التشغيل.</p>
+<body>
+    <h1 class="question">ما الذي تريد الوصول إليه؟</h1>
 
-<audio id="player" controls autoplay></audio>
-
-<script>
-const tracks = [
-  "https://archive.org/download/xWalyastaafefMp3/_xWalyastaafef01.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/_xWalyastaafef02.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/_xWalyastaafef03.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/_xWalyastaafef04.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE01.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE02.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE03.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE04.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE05.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE06.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE07.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE08.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE09.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE10.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE11.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE12.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE13.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE14.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE15.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE16.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE17.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE18.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE19.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE20.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE21.mp3",
-  "https://archive.org/download/xWalyastaafefMp3/xWalyastaafef_LIVE22.mp3"
-];
-
-let player = document.getElementById("player");
-
-function playRandom() {
-  let random = Math.floor(Math.random() * tracks.length);
-  player.src = tracks[random];
-  player.play();
-}
-
-player.addEventListener("ended", playRandom);
-
-playRandom();
-</script>
+    <div class="buttons-container">
+        <a href="page2.html" class="btn">الإجابة الأولى</a>
+        <a href="buttons.html" class="btn">الإجابة الثانية</a>
+    </div>
 </body>
 </html>
