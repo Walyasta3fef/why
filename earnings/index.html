@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Earnings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1f1a14;--bg:#f4efe4;--card:#fff;--green:#2c9a58;--blue:#2a6fc0;--red:#d9483a;--sun:#ffbf2f;--muted:#6b6257}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Cairo",Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:900px;margin:0 auto;padding:14px}
+  header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+  h1{margin:0;font-size:24px;font-weight:900}
+  .tools{display:flex;gap:6px;flex-wrap:wrap}
+  button,.btn{font-family:inherit;font-weight:700;font-size:14px;border:2px solid var(--ink);border-radius:10px;padding:4px 12px;
+    background:#fff;cursor:pointer;text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+  button.primary,.btn.primary{background:var(--green);color:#fff}
+  button.danger{background:var(--red);color:#fff}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:12px}
+  .kpi{background:var(--card);border:3px solid var(--ink);border-radius:16px;padding:10px 14px}
+  .kpi small{display:block;color:var(--muted);font-weight:700}
+  .kpi b{font-size:26px;font-weight:900}
+  .kpi .sub{font-size:14px;color:var(--muted);font-weight:700}
+  .bar{height:12px;background:#e7e0d2;border:2px solid var(--ink);border-radius:8px;overflow:hidden;margin-top:6px}
+  .bar div{height:100%;background:var(--green);width:0}
+  section{background:var(--card);border:3px solid var(--ink);border-radius:16px;padding:12px 14px;margin-bottom:12px}
+  section h2{margin:0 0 8px;font-size:18px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{padding:6px 4px;border-bottom:1px solid #e3dccd;text-align:start}
+  th{color:var(--muted);font-size:13px}
+  input{font-family:inherit;font-size:15px;border:2px solid var(--ink);border-radius:8px;padding:3px 6px;width:96px;direction:ltr;text-align:center}
+  input.wide{width:150px}
+  .counter{display:inline-flex;align-items:center;gap:4px}
+  .counter button{padding:0 9px;font-size:18px;line-height:1.4}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .muted{color:var(--muted);font-size:13px}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:9}
+  .modal.open{display:flex}
+  .box{background:#fff;border:3px solid var(--ink);border-radius:16px;max-width:520px;width:100%;padding:16px}
+  .box label{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:6px 0;font-weight:700}
+  .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:6px 16px;border-radius:10px;display:none}
+  .num{direction:ltr;unicode-bidi:embed;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 data-t="title"></h1>
+    <div class="tools">
+      <button onclick="openModal('settings')" data-t="settings"></button>
+      <button onclick="exportData()" data-t="export"></button>
+      <button onclick="document.getElementById('imp').click()" data-t="import"></button>
+      <input type="file" id="imp" accept=".json" style="display:none" onchange="importData(this)">
+      <button onclick="toggleLang()" id="lang-btn"></button>
+    </div>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><small data-t="k_net"></small><b class="num" id="k-net"></b><div class="sub num" id="k-net-egp"></div></div>
+    <div class="kpi"><small data-t="k_avail"></small><b class="num" id="k-avail"></b><div class="sub num" id="k-avail-egp"></div>
+      <div class="bar"><div id="k-bar"></div></div><div class="muted" id="k-bar-txt"></div></div>
+    <div class="kpi"><small data-t="k_withdrawn"></small><b class="num" id="k-wd"></b><div class="sub num" id="k-wd-egp"></div></div>
+    <div class="kpi"><small data-t="k_sales"></small><b class="num" id="k-sales"></b><div class="sub" id="k-fees"></div></div>
+  </div>
+
+  <section>
+    <h2><span data-t="games"></span><a class="btn primary" href="https://itch.io/dashboard" target="_blank" rel="noopener" data-t="open_itch"></a></h2>
+    <table>
+      <thead><tr><th data-t="game"></th><th data-t="price"></th><th data-t="sales"></th><th data-t="net_each"></th><th data-t="net_total"></th></tr></thead>
+      <tbody id="games"></tbody>
+    </table>
+    <p class="muted" data-t="games_hint"></p>
+  </section>
+
+  <section>
+    <h2 data-t="rate_title"></h2>
+    <div class="row">
+      <label class="row"><span data-t="rate"></span> <input id="rate" type="number" step="0.01" min="0" onchange="setRate(this.value)"></label>
+      <span class="muted" data-t="rate_hint"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2><span data-t="withdrawals"></span><button class="primary" onclick="openModal('wd')" data-t="add_wd"></button></h2>
+    <table>
+      <thead><tr><th data-t="date"></th><th data-t="amount"></th><th data-t="rate_short"></th><th data-t="egp"></th><th></th></tr></thead>
+      <tbody id="wds"></tbody>
+    </table>
+    <p class="muted" data-t="wd_hint"></p>
+  </section>
+</div>
+
+<!-- settings -->
+<div class="modal" id="settings" onclick="if(event.target===this)closeModals()"><div class="box">
+  <h2 data-t="settings"></h2>
+  <label><span data-t="s_share"></span><input id="s-share" type="number" step="0.5" min="0" max="100"></label>
+  <label><span data-t="s_fixed"></span><input id="s-fixed" type="number" step="0.01" min="0"></label>
+  <label><span data-t="s_pct"></span><input id="s-pct" type="number" step="0.1" min="0"></label>
+  <label><span data-t="s_min"></span><input id="s-min" type="number" step="1" min="0"></label>
+  <p class="muted" data-t="s_hint"></p>
+  <div class="row"><button class="primary" onclick="saveSettings()" data-t="save"></button><button onclick="closeModals()" data-t="close"></button>
+    <button class="danger" onclick="resetAll()" data-t="reset"></button></div>
+</div></div>
+
+<!-- withdrawal -->
+<div class="modal" id="wd" onclick="if(event.target===this)closeModals()"><div class="box">
+  <h2 data-t="add_wd"></h2>
+  <label><span data-t="amount"></span><input id="wd-amount" type="number" step="0.01" min="0"></label>
+  <label><span data-t="rate_short"></span><input id="wd-rate" type="number" step="0.01" min="0"></label>
+  <label><span data-t="date"></span><input id="wd-date" type="date" class="wide"></label>
+  <div class="row"><button class="primary" onclick="addWithdrawal()" data-t="save"></button><button onclick="closeModals()" data-t="close"></button></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY = "earnings_v1";
+const T = {
+  ar: {
+    title: "أرباح الألعاب", settings: "الإعدادات", export: "تصدير", import: "استيراد",
+    k_net: "صافي الأرباح الكلي", k_avail: "متاح للسحب", k_withdrawn: "تم سحبه", k_sales: "عدد المبيعات",
+    games: "الألعاب", open_itch: "فتح لوحة itch.io", game: "اللعبة", price: "السعر", sales: "المبيعات",
+    net_each: "صافي النسخة", net_total: "صافي الإجمالي",
+    games_hint: "حدّث عدد المبيعات من لوحة itch.io. الصافي محسوب بعد عمولة itch ورسوم الدفع.",
+    rate_title: "سعر الصرف", rate: "الجنيه مقابل الدولار:", rate_hint: "اكتب سعر الصرف الذي تحصل عليه فعليًا عند السحب.",
+    withdrawals: "السحوبات", add_wd: "تسجيل سحب", date: "التاريخ", amount: "المبلغ بالدولار", rate_short: "سعر الصرف", egp: "بالجنيه",
+    wd_hint: "السحب نفسه يتم من لوحة itch.io إلى Payoneer أو PayPal، ثم سجّله هنا لتتابع رصيدك.",
+    s_share: "نسبة itch.io (%)", s_fixed: "رسوم الدفع الثابتة لكل عملية ($)", s_pct: "رسوم الدفع النسبية (%)", s_min: "أقل مبلغ للسحب ($)",
+    s_hint: "القيم الافتراضية: itch 10%، والدفع 0.30$ + 2.9%، وأقل سحب 5$. غيّرها إن تغيّرت في حسابك.",
+    save: "حفظ", close: "إغلاق", reset: "مسح كل البيانات", saved: "تم الحفظ", imported: "تم استيراد البيانات",
+    bad_file: "الملف غير صالح", confirm_reset: "هل تريد مسح كل البيانات؟", confirm_del: "حذف هذا السحب؟",
+    need_more: "متبقٍّ {x} للوصول إلى حد السحب", can_withdraw: "يمكنك السحب الآن", fees: "عمولات ورسوم: {x}",
+    no_wd: "لا توجد سحوبات بعد", lang: "EN"
+  },
+  en: {
+    title: "Game Earnings", settings: "Settings", export: "Export", import: "Import",
+    k_net: "Total net earnings", k_avail: "Available to withdraw", k_withdrawn: "Withdrawn", k_sales: "Sales",
+    games: "Games", open_itch: "Open itch.io dashboard", game: "Game", price: "Price", sales: "Sales",
+    net_each: "Net per copy", net_total: "Net total",
+    games_hint: "Update the sales count from your itch.io dashboard. Net is after the itch.io share and payment fees.",
+    rate_title: "Exchange rate", rate: "EGP per USD:", rate_hint: "Enter the rate you actually get when you withdraw.",
+    withdrawals: "Withdrawals", add_wd: "Record a withdrawal", date: "Date", amount: "Amount (USD)", rate_short: "Rate", egp: "EGP",
+    wd_hint: "The withdrawal itself happens in the itch.io dashboard (to Payoneer or PayPal); record it here to track your balance.",
+    s_share: "itch.io share (%)", s_fixed: "Fixed payment fee per sale ($)", s_pct: "Payment fee (%)", s_min: "Minimum payout ($)",
+    s_hint: "Defaults: itch 10%, payment $0.30 + 2.9%, minimum payout $5. Change them if your account differs.",
+    save: "Save", close: "Close", reset: "Erase all data", saved: "Saved", imported: "Data imported",
+    bad_file: "Invalid file", confirm_reset: "Erase all data?", confirm_del: "Delete this withdrawal?",
+    need_more: "{x} more to reach the payout minimum", can_withdraw: "You can withdraw now", fees: "Fees: {x}",
+    no_wd: "No withdrawals yet", lang: "عربي"
+  }
+};
+const DEFAULT = {
+  lang: "ar", rate: 50,
+  settings: { share: 10, fixed: 0.30, pct: 2.9, min: 5 },
+  games: [ { id: "corner", name: "Corner Market", price: 1, sales: 0 },
+           { id: "fayoum", name: "Alam Al-Fayoum", price: 1, sales: 0 } ],
+  withdrawals: []
+};
+let D = load();
+
+function load() {
+  try {
+    const s = JSON.parse(localStorage.getItem(KEY));
+    if (s && s.games) return Object.assign(JSON.parse(JSON.stringify(DEFAULT)), s);
+  } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT));
+}
+function persist() { try { localStorage.setItem(KEY, JSON.stringify(D)); } catch (e) {} }
+function t(k) { return T[D.lang][k] || k; }
+function usd(v) { return "$" + (Math.round(v * 100) / 100).toFixed(2); }
+function egp(v) { return (Math.round(v)).toLocaleString("en-US") + " EGP"; }
+function toast(msg) { const el = document.getElementById("toast"); el.textContent = msg; el.style.display = "block";
+  clearTimeout(toast.t); toast.t = setTimeout(() => el.style.display = "none", 2200); }
+
+function netPerSale(price) {
+  const s = D.settings;
+  const n = price - price * s.share / 100 - (s.fixed + price * s.pct / 100);
+  return Math.max(0, n);
+}
+
+function render() {
+  document.documentElement.lang = D.lang;
+  document.documentElement.dir = D.lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-t]").forEach(el => el.textContent = t(el.dataset.t));
+  document.getElementById("lang-btn").textContent = t("lang");
+  document.getElementById("rate").value = D.rate;
+  let net = 0, gross = 0, sales = 0;
+  const rows = D.games.map((g, i) => {
+    const each = netPerSale(g.price);
+    net += each * g.sales; gross += g.price * g.sales; sales += g.sales;
+    return `<tr><td><b>${g.name}</b></td>
+      <td><input type="number" step="0.01" min="0" value="${g.price}" onchange="setGame(${i},'price',this.value)"></td>
+      <td><span class="counter"><button onclick="bump(${i},-1)">−</button>
+        <input type="number" min="0" step="1" value="${g.sales}" onchange="setGame(${i},'sales',this.value)">
+        <button onclick="bump(${i},1)">+</button></span></td>
+      <td class="num">${usd(each)}</td><td class="num">${usd(each * g.sales)}</td></tr>`;
+  }).join("");
+  document.getElementById("games").innerHTML = rows;
+  const withdrawn = D.withdrawals.reduce((a, w) => a + Number(w.amount), 0);
+  const withdrawnEgp = D.withdrawals.reduce((a, w) => a + Number(w.amount) * Number(w.rate), 0);
+  const avail = Math.max(0, net - withdrawn);
+  document.getElementById("k-net").textContent = usd(net);
+  document.getElementById("k-net-egp").textContent = egp(net * D.rate);
+  document.getElementById("k-avail").textContent = usd(avail);
+  document.getElementById("k-avail-egp").textContent = egp(avail * D.rate);
+  document.getElementById("k-wd").textContent = usd(withdrawn);
+  document.getElementById("k-wd-egp").textContent = egp(withdrawnEgp);
+  document.getElementById("k-sales").textContent = sales;
+  document.getElementById("k-fees").textContent = t("fees").replace("{x}", usd(gross - net));
+  const min = D.settings.min || 0;
+  const pct = min > 0 ? Math.min(100, avail / min * 100) : 100;
+  document.getElementById("k-bar").style.width = pct + "%";
+  document.getElementById("k-bar-txt").textContent = avail >= min ? t("can_withdraw") : t("need_more").replace("{x}", usd(min - avail));
+  const wd = D.withdrawals.slice().reverse().map(w => {
+    const idx = D.withdrawals.indexOf(w);
+    return `<tr><td class="num">${w.date}</td><td class="num">${usd(w.amount)}</td><td class="num">${w.rate}</td>
+      <td class="num">${egp(w.amount * w.rate)}</td><td><button onclick="delWithdrawal(${idx})">✕</button></td></tr>`;
+  }).join("");
+  document.getElementById("wds").innerHTML = wd || `<tr><td colspan="5" class="muted">${t("no_wd")}</td></tr>`;
+}
+
+function setGame(i, key, val) { D.games[i][key] = Math.max(0, Number(val) || 0); if (key === "sales") D.games[i].sales = Math.round(D.games[i].sales); persist(); render(); }
+function bump(i, d) { D.games[i].sales = Math.max(0, D.games[i].sales + d); persist(); render(); }
+function setRate(v) { D.rate = Math.max(0, Number(v) || 0); persist(); render(); }
+function toggleLang() { D.lang = D.lang === "ar" ? "en" : "ar"; persist(); render(); }
+
+function openModal(id) {
+  if (id === "settings") {
+    const s = D.settings;
+    document.getElementById("s-share").value = s.share; document.getElementById("s-fixed").value = s.fixed;
+    document.getElementById("s-pct").value = s.pct; document.getElementById("s-min").value = s.min;
+  }
+  if (id === "wd") {
+    document.getElementById("wd-amount").value = "";
+    document.getElementById("wd-rate").value = D.rate;
+    document.getElementById("wd-date").value = new Date().toISOString().slice(0, 10);
+  }
+  document.getElementById(id).classList.add("open");
+}
+function closeModals() { document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open")); }
+function saveSettings() {
+  D.settings = { share: +document.getElementById("s-share").value || 0, fixed: +document.getElementById("s-fixed").value || 0,
+    pct: +document.getElementById("s-pct").value || 0, min: +document.getElementById("s-min").value || 0 };
+  persist(); closeModals(); render(); toast(t("saved"));
+}
+function addWithdrawal() {
+  const amount = +document.getElementById("wd-amount").value;
+  if (!amount || amount <= 0) return;
+  D.withdrawals.push({ date: document.getElementById("wd-date").value, amount: amount, rate: +document.getElementById("wd-rate").value || D.rate });
+  persist(); closeModals(); render(); toast(t("saved"));
+}
+function delWithdrawal(i) { if (confirm(t("confirm_del"))) { D.withdrawals.splice(i, 1); persist(); render(); } }
+function resetAll() { if (confirm(t("confirm_reset"))) { D = JSON.parse(JSON.stringify(DEFAULT)); persist(); closeModals(); render(); } }
+
+function exportData() {
+  const blob = new Blob([JSON.stringify(D, null, 1)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "earnings-" + new Date().toISOString().slice(0, 10) + ".json";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+function importData(input) {
+  const f = input.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const d = JSON.parse(r.result);
+      if (!d.games || !d.settings) throw 0;
+      D = Object.assign(JSON.parse(JSON.stringify(DEFAULT)), d); persist(); render(); toast(t("imported"));
+    } catch (e) { toast(t("bad_file")); }
+    input.value = "";
+  };
+  r.readAsText(f);
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
+render();
+</script>
+</body>
+</html>

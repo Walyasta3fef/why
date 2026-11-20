@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Nile Games - Corner Market & Alam Al-Fayoum</title>
+<meta name="description" content="ألعاب كمبيوتر كرتونية مستقلة: Corner Market محاكي سوبر ماركت ودليفري، وعالم الفيوم لعبة عالم مفتوح عربية. كل لعبة بدولار واحد.">
+<meta name="keywords" content="Corner Market, supermarket simulator, عالم الفيوم, لعبة عالم مفتوح عربية, لعبة سوبر ماركت, indie games, itch.io">
+<meta property="og:title" content="Pixel Nile Games - كل لعبة بدولار">
+<meta property="og:description" content="Corner Market و عالم الفيوم: ألعاب كرتونية للكمبيوتر بدولار واحد فقط.">
+<meta property="og:image" content="images/cm_checkout.jpg">
+<link rel="icon" href="images/cm_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1f1a14;--sand:#f7e7c4;--sand2:#efd7a3;--green:#2c9a58;--blue:#2a6fc0;--red:#e2513f;--sun:#ffbf2f;--card:#fffaf0}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Cairo",Tahoma,Arial,sans-serif;background:var(--sand);color:var(--ink);line-height:1.7}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  header{position:sticky;top:0;z-index:20;background:rgba(247,231,196,.94);border-bottom:4px solid var(--ink)}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+  .logo{font-weight:900;font-size:24px;display:flex;align-items:center;gap:10px}
+  .logo span.dot{width:30px;height:30px;border-radius:50%;background:var(--sun);border:4px solid var(--ink)}
+  .lang{font-family:inherit;font-weight:900;background:#fff;border:3px solid var(--ink);border-radius:10px;padding:2px 12px;cursor:pointer}
+  .hero{padding:44px 0 26px;text-align:center}
+  .hero h1{font-size:46px;margin:0;font-weight:900;text-shadow:3px 3px 0 #fff,6px 6px 0 var(--ink)}
+  .hero p{font-size:19px;font-weight:700;margin:12px 0 0}
+  .price-tag{display:inline-block;margin-top:14px;background:var(--red);color:#fff;font-weight:900;font-size:20px;
+    border:4px solid var(--ink);border-radius:14px;padding:4px 18px;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--ink)}
+  .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;padding:20px 0 50px}
+  .game{background:var(--card);border:5px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column}
+  .cover{position:relative;cursor:zoom-in}
+  .cover img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:5px solid var(--ink)}
+  .badge{position:absolute;top:12px;inset-inline-start:12px;background:var(--sun);border:4px solid var(--ink);border-radius:50%;
+    width:74px;height:74px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;transform:rotate(-10deg)}
+  .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .title{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .title h2{margin:0;font-size:28px;font-weight:900}
+  .icons{display:flex;gap:6px}
+  .icon-btn{width:36px;height:36px;border-radius:50%;border:3px solid var(--ink);background:#fff;font-weight:900;cursor:pointer;font-family:inherit;font-size:16px}
+  .tagline{margin:0;font-weight:700;color:#4a4036}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:0 10px;font-size:14px;font-weight:700}
+  .thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+  .thumbs img{height:62px;border:3px solid var(--ink);border-radius:8px;cursor:zoom-in}
+  .buy{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:900;font-size:21px;
+    color:#fff;background:var(--green);border:4px solid var(--ink);border-radius:16px;padding:10px;box-shadow:5px 5px 0 var(--ink);transition:transform .1s}
+  .buy:hover{transform:translate(-2px,-2px)}
+  .buy.disabled{background:#8f8a80;cursor:not-allowed;box-shadow:none}
+  .note{font-size:13px;text-align:center;margin:0;color:#5a5046}
+  .how{background:var(--sand2);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);padding:34px 0}
+  .how h3{margin:0 0 16px;font-size:28px;font-weight:900;text-align:center}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  .step{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:12px 14px;font-weight:700}
+  .step b{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--sun);border:3px solid var(--ink);align-items:center;justify-content:center;margin-inline-end:6px}
+  footer{text-align:center;padding:22px;font-weight:700;background:var(--ink);color:var(--sand)}
+  .modal{position:fixed;inset:0;background:rgba(15,12,8,.78);display:none;align-items:center;justify-content:center;z-index:60;padding:18px}
+  .modal.open{display:flex}
+  .box{background:var(--card);border:5px solid var(--ink);border-radius:20px;max-width:540px;width:100%;padding:22px;position:relative;box-shadow:8px 8px 0 var(--ink)}
+  .box h4{margin:0 0 10px;font-size:22px}
+  .box ul{margin:0;padding-inline-start:20px}
+  .x{position:absolute;top:10px;inset-inline-end:10px;width:36px;height:36px;border-radius:10px;border:3px solid var(--ink);background:var(--red);color:#fff;font-weight:900;cursor:pointer}
+  .lb img{max-width:94vw;max-height:88vh;border:5px solid var(--ink);border-radius:14px}
+  html[dir=ltr] body{font-family:"Cairo",Arial,sans-serif}
+</style>
+</head>
+<body>
+<script>
+  // ============ CONFIG: put the itch.io page links here after creating them ============
+  const CONFIG = {
+    storeName: "Pixel Nile Games",
+    itch: {
+      corner: "",   // e.g. "https://yourname.itch.io/corner-market"
+      fayoum: ""    // e.g. "https://yourname.itch.io/alam-al-fayoum"
+    }
+  };
+</script>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span><span id="store-name"></span></div>
+    <button class="lang" onclick="toggleLang()" id="lang-btn">EN</button>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1 data-t="hero_title"></h1>
+  <p data-t="hero_sub"></p>
+  <div class="price-tag" data-t="hero_price"></div>
+</section>
+
+<main class="wrap games">
+  <!-- Corner Market -->
+  <article class="game">
+    <div class="cover" onclick="zoom('images/cm_checkout.jpg')">
+      <img src="images/cm_checkout.jpg" alt="Corner Market">
+      <div class="badge">$1</div>
+    </div>
+    <div class="body">
+      <div class="title">
+        <h2>Corner Market</h2>
+        <div class="icons">
+          <button class="icon-btn" title="" onclick="openModal('cm-info')" data-tt="more">i</button>
+          <button class="icon-btn" title="" onclick="openModal('cm-req')" data-tt="req">⚙</button>
+        </div>
+      </div>
+      <p class="tagline" data-t="cm_tag"></p>
+      <div class="chips" id="cm-chips"></div>
+      <div class="thumbs">
+        <img src="images/cm_shelves.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="images/cm_dairy.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="images/cm_produce.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="images/cm_customers.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="images/cm_scooter.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="images/cm_tablet.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+      </div>
+      <a class="buy" id="buy-corner" target="_blank" rel="noopener"></a>
+      <p class="note" data-t="lang_cm"></p>
+    </div>
+  </article>
+
+  <!-- Alam Al-Fayoum -->
+  <article class="game">
+    <div class="cover" onclick="zoom('../alam-alfayoum/images/canal.jpg')">
+      <img src="../alam-alfayoum/images/canal.jpg" alt="Alam Al-Fayoum">
+      <div class="badge">$1</div>
+    </div>
+    <div class="body">
+      <div class="title">
+        <h2 data-t="fy_name"></h2>
+        <div class="icons">
+          <button class="icon-btn" onclick="openModal('fy-info')" data-tt="more">i</button>
+          <button class="icon-btn" onclick="openModal('fy-req')" data-tt="req">⚙</button>
+        </div>
+      </div>
+      <p class="tagline" data-t="fy_tag"></p>
+      <div class="chips" id="fy-chips"></div>
+      <div class="thumbs">
+        <img src="../alam-alfayoum/images/hero.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="../alam-alfayoum/images/drive.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="../alam-alfayoum/images/drift.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="../alam-alfayoum/images/home.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="../alam-alfayoum/images/taxi.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+        <img src="../alam-alfayoum/images/night.jpg" alt="" onclick="zoom(this.src)" loading="lazy">
+      </div>
+      <a class="buy" id="buy-fayoum" target="_blank" rel="noopener"></a>
+      <p class="note" data-t="lang_fy"></p>
+    </div>
+  </article>
+</main>
+
+<section class="how">
+  <div class="wrap">
+    <h3 data-t="how_title"></h3>
+    <div class="steps">
+      <div class="step"><b>1</b><span data-t="how1"></span></div>
+      <div class="step"><b>2</b><span data-t="how2"></span></div>
+      <div class="step"><b>3</b><span data-t="how3"></span></div>
+      <div class="step"><b>4</b><span data-t="how4"></span></div>
+    </div>
+  </div>
+</section>
+
+<footer id="foot"></footer>
+
+<!-- popups -->
+<div class="modal" id="cm-info" onclick="bg(event,this)"><div class="box"><button class="x" onclick="closeModals()">×</button>
+  <h4>Corner Market</h4><ul id="cm-list"></ul></div></div>
+<div class="modal" id="fy-info" onclick="bg(event,this)"><div class="box"><button class="x" onclick="closeModals()">×</button>
+  <h4 data-t="fy_name"></h4><ul id="fy-list"></ul></div></div>
+<div class="modal" id="cm-req" onclick="bg(event,this)"><div class="box"><button class="x" onclick="closeModals()">×</button>
+  <h4 data-t="req_title"></h4><ul id="cm-req-list"></ul></div></div>
+<div class="modal" id="fy-req" onclick="bg(event,this)"><div class="box"><button class="x" onclick="closeModals()">×</button>
+  <h4 data-t="req_title"></h4><ul id="fy-req-list"></ul></div></div>
+<div class="modal lb" id="lightbox" onclick="closeModals()"><img id="lb-img" alt=""></div>
+
+<script>
+const T = {
+  ar: {
+    hero_title: "ألعاب كرتونية بدولار واحد",
+    hero_sub: "ألعاب كمبيوتر مستقلة صُنعت بحب: محاكي سوبر ماركت، وعالم مفتوح بروح الفيوم.",
+    hero_price: "كل لعبة بـ 1$ فقط",
+    cm_tag: "أدِر سوبر ماركت الحي: رتّب الرفوف، اخدم الزبائن على الكاشير، ووصّل الطلبات بالسكوتر.",
+    fy_name: "عالم الفيوم",
+    fy_tag: "لعبة عالم مفتوح عربية بروح الفيوم: سيارات وتاكسي وبيت وأسرة ولعب مع صديق.",
+    cm_chips: ["324 منتجًا", "زبائن أذكياء", "توصيل بالسكوتر", "موظفون", "3 جودات"],
+    fy_chips: ["عالم مفتوح", "سيارات ودراجات", "لعب مع صديق", "جوع وعطش", "عربية"],
+    cm_list: ["أكثر من 300 منتج في 20 قسمًا: مخبوزات، ألبان، خضار وفاكهة، مجمدات، منظفات وغيرها.",
+      "رفوف وثلاجات وفريزرات وستاندات خضار، ولكل منتج المكان المناسب له.",
+      "زبائن لكل منهم قائمة مشتريات وميزانية وصبر، ويغضبون إذا ارتفع السعر أو نقص المنتج.",
+      "الكاشير: امسح المنتجات واختر الباقي الصحيح.",
+      "طلبات توصيل إلى بيوت مرقّمة بالسكوتر قبل الموعد مقابل بقشيش.",
+      "وظّف كاشيرًا وعامل رصّ وسائق توصيل، ووسّع المتجر.",
+      "تقرير نهاية اليوم، وحفظ تلقائي، و3 مستويات جودة."],
+    fy_list: ["مدينة كبيرة بروح الفيوم: بحر يوسف والسواقي وبحيرة قارون.",
+      "سيارات وتوك توك ودراجات نارية من المعرض، وانجراف على الطريق الدائري.",
+      "عمل سائق أجرة وكاشير في المول.",
+      "بيت بمطبخ وثلاجة، وجوع وعطش، والطعام ينفد فعلًا.",
+      "شرطة تطاردك إذا سرقت سيارة.",
+      "لعب مع صديق على الشبكة نفسها."],
+    req_title: "متطلبات التشغيل",
+    cm_req: ["ويندوز 10 أو 11 (64 بت)", "ذاكرة 4 جيجابايت", "كارت شاشة يدعم OpenGL 3.3 (وتعمل على الأقدم بالجودة المنخفضة)", "مساحة 100 ميجابايت"],
+    fy_req: ["ويندوز 10 أو 11 (64 بت)", "ذاكرة 4 جيجابايت", "كارت شاشة يدعم OpenGL 2 أو أحدث", "مساحة 150 ميجابايت"],
+    buy: "اشترِ الآن بـ 1$",
+    soon: "قريبًا على itch.io",
+    lang_cm: "اللعبة باللغة الإنجليزية",
+    lang_fy: "اللعبة باللغة العربية",
+    how_title: "كيف أشتري؟",
+    how1: "اضغط زر الشراء، وستنتقل إلى صفحة اللعبة على itch.io.",
+    how2: "ادفع دولارًا واحدًا بالبطاقة أو PayPal.",
+    how3: "حمّل الملف المضغوط وفكّ الضغط.",
+    how4: "شغّل ملف اللعبة واستمتع!",
+    foot: "صُنع بحب في مصر",
+    more: "تفاصيل", req: "المتطلبات"
+  },
+  en: {
+    hero_title: "Cartoon games for $1",
+    hero_sub: "Indie PC games made with love: a supermarket simulator and an open world inspired by Faiyum, Egypt.",
+    hero_price: "Every game only $1",
+    cm_tag: "Run your neighborhood supermarket: stock shelves, serve customers and deliver orders on a scooter.",
+    fy_name: "Alam Al-Fayoum",
+    fy_tag: "An Arabic open-world game inspired by Faiyum: cars, taxi jobs, a home and family, and co-op with a friend.",
+    cm_chips: ["324 products", "Smart customers", "Scooter delivery", "Staff", "3 quality levels"],
+    fy_chips: ["Open world", "Cars & bikes", "Play with a friend", "Hunger & thirst", "Arabic"],
+    cm_list: ["300+ products in 20 categories: bakery, dairy, fruit & veg, frozen, cleaning and more.",
+      "Shelves, fridges, freezers and produce stands - every product has its place.",
+      "Customers with shopping lists, budgets and patience; they get upset by high prices or empty shelves.",
+      "Cashier: scan the items and pick the right change.",
+      "Deliver orders to numbered houses on your scooter before the deadline for tips.",
+      "Hire a cashier, a stocker and a driver, and expand your store.",
+      "End-of-day report, auto save and 3 graphics quality levels."],
+    fy_list: ["A big city inspired by Faiyum: Bahr Yusuf canal, water wheels and Lake Qarun.",
+      "Cars, tuk-tuks and motorcycles from the dealer, and drifting on the ring road.",
+      "Work as a taxi driver or a mall cashier.",
+      "A home with a kitchen and fridge, hunger and thirst - food really runs out.",
+      "Police chase you if you steal a car.",
+      "Play with a friend on the same network."],
+    req_title: "System requirements",
+    cm_req: ["Windows 10 or 11 (64-bit)", "4 GB RAM", "OpenGL 3.3 graphics (older cards run on the Low preset)", "100 MB free space"],
+    fy_req: ["Windows 10 or 11 (64-bit)", "4 GB RAM", "OpenGL 2 graphics or newer", "150 MB free space"],
+    buy: "Buy now for $1",
+    soon: "Coming soon on itch.io",
+    lang_cm: "Game language: English",
+    lang_fy: "Game language: Arabic",
+    how_title: "How do I buy?",
+    how1: "Click the buy button to open the game page on itch.io.",
+    how2: "Pay $1 by card or PayPal.",
+    how3: "Download the zip file and extract it.",
+    how4: "Run the game and have fun!",
+    foot: "Made with love in Egypt",
+    more: "Details", req: "Requirements"
+  }
+};
+let lang = "ar";
+try { lang = localStorage.getItem("store_lang") || "ar"; } catch (e) {}
+
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.getElementById("lang-btn").textContent = lang === "ar" ? "EN" : "عربي";
+  document.getElementById("store-name").textContent = CONFIG.storeName;
+  document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t[el.dataset.t]; });
+  document.querySelectorAll("[data-tt]").forEach(el => { el.title = t[el.dataset.tt]; });
+  const chips = (id, arr) => { document.getElementById(id).innerHTML = arr.map(c => `<span class="chip">${c}</span>`).join(""); };
+  chips("cm-chips", t.cm_chips); chips("fy-chips", t.fy_chips);
+  const list = (id, arr) => { document.getElementById(id).innerHTML = arr.map(c => `<li>${c}</li>`).join(""); };
+  list("cm-list", t.cm_list); list("fy-list", t.fy_list); list("cm-req-list", t.cm_req); list("fy-req-list", t.fy_req);
+  setBuy("buy-corner", CONFIG.itch.corner, t);
+  setBuy("buy-fayoum", CONFIG.itch.fayoum, t);
+  document.getElementById("foot").textContent = "© 2026 " + CONFIG.storeName + " · " + t.foot;
+}
+function setBuy(id, url, t) {
+  const a = document.getElementById(id);
+  if (url) { a.href = url; a.classList.remove("disabled"); a.textContent = "🛒 " + t.buy; a.onclick = null; }
+  else { a.removeAttribute("href"); a.classList.add("disabled"); a.textContent = t.soon; a.onclick = e => e.preventDefault(); }
+}
+function toggleLang() {
+  lang = lang === "ar" ? "en" : "ar";
+  try { localStorage.setItem("store_lang", lang); } catch (e) {}
+  render();
+}
+function openModal(id) { document.getElementById(id).classList.add("open"); }
+function closeModals() { document.querySelectorAll(".modal.open").forEach(m => m.classList.remove("open")); }
+function bg(e, el) { if (e.target === el) closeModals(); }
+function zoom(src) { document.getElementById("lb-img").src = src; openModal("lightbox"); }
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
+render();
+</script>
+</body>
+</html>
