@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>تحميل لعبة Corner Market - محاكي سوبر ماركت ودليفري مجاني للكمبيوتر</title>
-<meta name="description" content="حمّل Corner Market مجانًا: لعبة محاكاة سوبر ماركت كرتونية للكمبيوتر. رتّب البضاعة، واخدم الزبائن على الكاشير، ووصّل الطلبات بالسكوتر، ووسّع متجرك.">
+<meta name="description" content="حمّل Corner Market مجانًا: لعبة محاكاة سوبر ماركت كرتونية للكمبيوتر والموبايل. رتّب البضاعة، واخدم الزبائن على الكاشير، ووصّل الطلبات بالسكوتر، ووسّع متجرك.">
 <meta name="keywords" content="Corner Market, لعبة سوبر ماركت, محاكي سوبر ماركت, supermarket simulator, لعبة كاشير, لعبة دليفري, ألعاب كمبيوتر مجانية">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://walyasta3fef.github.io/why/corner-market/">
@@ -18,7 +18,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Corner Market",
  "description":"لعبة محاكاة سوبر ماركت ودليفري كرتونية للكمبيوتر.","genre":["Simulation","Management"],
- "gamePlatform":"PC","operatingSystem":"Windows 10, Windows 11","applicationCategory":"Game","inLanguage":"en",
+ "gamePlatform":["PC","Android"],"operatingSystem":"Windows 10, Windows 11, Android 5+","applicationCategory":"Game","inLanguage":"en",
  "image":"https://walyasta3fef.github.io/why/corner-market/images/cm_checkout.jpg","url":"https://walyasta3fef.github.io/why/corner-market/",
  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
  "downloadUrl":"https://walyasta3fef.github.io/why/corner-market/CornerMarket_Windows.zip","playMode":"SinglePlayer"}
@@ -143,6 +143,16 @@
   .promo-card .go{align-self:flex-start;margin-top:8px;background:var(--palm);color:#fff;border:3px solid var(--ink);border-radius:14px;
                   padding:8px 20px;font-weight:900;box-shadow:4px 4px 0 var(--ink)}
   @media (max-width:820px){.promo-card{grid-template-columns:1fr}}
+
+  /* ---------- platform buttons ---------- */
+  .dls{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .dl.win{background:#2b6fd6}
+  .dl.and{background:#2f9e55}
+  .dl small{display:block;font-size:13px;font-weight:700;opacity:.9;line-height:1}
+  .dl .t{display:flex;flex-direction:column;line-height:1.25}
+  .qbtn{width:40px;height:40px;border-radius:50%;border:3px solid var(--ink);background:var(--sun);font-family:inherit;
+        font-weight:900;font-size:20px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+  @media (max-width:820px){.sun,.cloud{display:none}.hero h1{font-size:40px}}
 </style>
 </head>
 <body>
@@ -165,13 +175,14 @@
     <div>
       <h1 dir="ltr" style="text-align:right">Corner Market</h1>
       <p class="lead">محاكي سوبر ماركت ودليفري: املأ الرفوف والثلاجات، واخدم الزبائن على الكاشير، ووصّل الطلبات بالسكوتر، وكبّر متجرك يومًا بعد يوم.</p>
-      <a class="dl" href="CornerMarket_Windows.zip" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
-        حمّل اللعبة مجانًا
-      </a>
+      <div class="dls">
+        <a class="dl win" href="CornerMarket_Windows.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg><span class="t">ويندوز<small>حوالي 14 ميجابايت</small></span></a>
+        <a class="dl and" href="CornerMarket_Android.apk" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg><span class="t">أندرويد<small>حوالي 25 ميجابايت</small></span></a>
+        <button class="qbtn" title="طريقة التثبيت على أندرويد" onclick="openModal('android')">؟</button>
+      </div>
       <div class="meta">
-        <span class="pill">ويندوز 10 / 11</span>
-        <span class="pill">حوالي 14 ميجابايت</span>
+        <span class="pill">مجانية</span>
+        <span class="pill">ويندوز وأندرويد</span>
         <span class="pill">اللعبة بالإنجليزية</span>
         <button class="pill help-btn" onclick="openModal('help')">؟ طريقة التشغيل</button>
       </div>
@@ -234,15 +245,15 @@
   <div class="wrap" style="text-align:center">
     <h2>جاهز للعب؟</h2>
     <div class="req" style="text-align:right;margin-bottom:30px">
-      <div><b>النظام</b>ويندوز 10 أو 11 (64 بت)</div>
-      <div><b>الذاكرة</b>4 جيجابايت أو أكثر</div>
-      <div><b>كارت الشاشة</b>يدعم OpenGL 3.3، أو OpenGL 2.1 للأجهزة الأقدم</div>
-      <div><b>المساحة</b>حوالي 35 ميجابايت بعد فك الضغط</div>
+      <div><b>ويندوز</b>ويندوز 10 أو 11 (64 بت)، وذاكرة 4 جيجابايت، وكارت شاشة يدعم OpenGL 3.3 أو 2.1</div>
+      <div><b>أندرويد</b>أندرويد 5 أو أحدث، وذاكرة 3 جيجابايت أو أكثر، والشاشة بالعرض</div>
+      <div><b>المساحة</b>حوالي 35 ميجابايت على ويندوز، وحوالي 70 ميجابايت على أندرويد بعد التثبيت</div>
     </div>
-    <a class="dl" href="CornerMarket_Windows.zip" download>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg>
-      حمّل Corner Market مجانًا
-    </a>
+    <div style="display:flex;justify-content:center"><div class="dls">
+        <a class="dl win" href="CornerMarket_Windows.zip" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg><span class="t">ويندوز<small>حوالي 14 ميجابايت</small></span></a>
+        <a class="dl and" href="CornerMarket_Android.apk" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M4 21h16"/></svg><span class="t">أندرويد<small>حوالي 25 ميجابايت</small></span></a>
+        <button class="qbtn" title="طريقة التثبيت على أندرويد" onclick="openModal('android')">؟</button>
+      </div></div>
     <div class="meta" style="justify-content:center">
       <button class="pill help-btn" onclick="openModal('help')">؟ طريقة التشغيل</button>
       <button class="pill help-btn" onclick="openModal('howto')">🎮 كيف ألعب؟</button>
@@ -279,11 +290,25 @@
     </ol>
   </div>
 </div>
+<div class="modal" id="android" onclick="if(event.target===this)closeModal()">
+  <div class="box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h3>التثبيت على أندرويد</h3>
+    <ol>
+      <li>حمّل ملف <code>CornerMarket_Android.apk</code> من الموبايل.</li>
+      <li>افتح الملف من الإشعارات أو من تطبيق الملفات.</li>
+      <li>إذا طلب الهاتف السماح بالتثبيت من هذا المصدر، اضغط «الإعدادات» وفعّل «السماح من هذا المصدر» ثم ارجع.</li>
+      <li>إذا ظهرت رسالة Play Protect، اضغط «مزيد من التفاصيل» ثم «التثبيت على أي حال». تظهر هذه الرسالة لأن اللعبة ليست من متجر Google Play.</li>
+      <li>العب والهاتف بالعرض. إذا كانت اللعبة بطيئة، اترك الجودة على «منخفضة» من الإعدادات.</li>
+    </ol>
+  </div>
+</div>
 <div class="modal" id="howto" onclick="if(event.target===this)closeModal()">
   <div class="box">
     <button class="close" onclick="closeModal()">×</button>
     <h3>كيف ألعب؟</h3>
     <ol>
+      <li>على الموبايل: اسحب إبهامك في يسار الشاشة للمشي، واسحب في يمينها للنظر، واستخدم الأزرار الظاهرة على الشاشة.</li>
       <li>افتح التابلت بزر <code>Tab</code> واشترِ صناديق البضاعة، وستظهر في منطقة المخزن الصفراء.</li>
       <li>احمل الصندوق بزر <code>E</code> واضغط بزر الفأرة الأيسر على القسم المناسب له.</li>
       <li>يبدأ الزبائن بالدخول الساعة 8 صباحًا، فاخدمهم على الكاشير بزر <code>E</code>.</li>
@@ -310,6 +335,9 @@
   function openModal(id){ document.getElementById(id).classList.add('open'); }
   function closeModal(){ document.querySelectorAll('.modal.open').forEach(function(m){ m.classList.remove('open'); }); }
   function zoom(fig){ document.getElementById('lbimg').src = fig.querySelector('img').src; openModal('lightbox'); }
+  if (/android/i.test(navigator.userAgent)) {
+    document.querySelectorAll('.dls').forEach(function(d){ var a = d.querySelector('.dl.and'); d.insertBefore(a, d.firstChild); });
+  }
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
 </script>
 </body>
